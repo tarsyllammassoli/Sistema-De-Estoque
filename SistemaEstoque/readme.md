@@ -6,7 +6,7 @@ Um sistema de gerenciamento de estoque simples, funcional e modular desenvolvido
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **Linguagem Backend:** Python 3.16.2
+* **Linguagem Backend:** Python 3.14.6
 * **Framework Web:** Flask
 * **Banco de Dados:** Microsoft SQL Server
 * **Driver de Conexão:** `pyodbc`
