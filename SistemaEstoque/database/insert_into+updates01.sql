@@ -79,3 +79,5 @@ insert into Usuarios(nome, email, cargo, status_usuario)
 values ('Maria Oliveira', 'maria.oliveira@techstore.com.br', 'Funcionário de Estoque', 'Ativo')
 insert into Usuarios(nome, email, cargo, status_usuario)
 values ('Lucas Ferreira', 'lucas.ferreira@techstore.com.br', 'Funcionário de Estoque', 'Inativo')
+
+EXEC sp_rename 'Usuarios.cargo', 'perfil_acesso', 'COLUMN';
