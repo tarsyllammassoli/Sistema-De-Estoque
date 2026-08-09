@@ -49,3 +49,19 @@ from Produtos p
 join Categorias c
 on p.id_categoria = c.id_categoria
 where c.id_categoria in (2,5,8)
+
+select p.nome, f.id_fornecedor
+from Produtos p
+join fornecedores f
+on p.id_fornecedor = f.id_fornecedor
+where f.id_fornecedor in (1,3,5)
+
+select tipo_movimentacao ,u.id_usuario
+from Movimentacoes_Estoque m
+join Usuarios u
+on m.id_usuario = u.id_usuario
+where u.id_usuario in (2,4,6)
+
+select nome, status_produto
+from produtos
+where status_produto in ('Ativo','Inativo')
