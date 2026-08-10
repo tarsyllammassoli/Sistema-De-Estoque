@@ -65,3 +65,32 @@ where u.id_usuario in (2,4,6)
 select nome, status_produto
 from produtos
 where status_produto in ('Ativo','Inativo')
+
+select nome, preco_venda
+from produtos
+where preco_venda between 100 and 500
+
+select nome, quantidade
+from produtos
+where quantidade between 10 and 30
+
+select id_movimentacoes, data_movimentacao
+from movimentacoes_estoque
+where data_movimentacao between '01-07-2026' and '15-07-2026'
+
+select nome, preco_compra
+from produtos
+where preco_compra between 200 and 1000
+order by preco_compra asc
+
+select nome
+from produtos
+where nome like 'Logitech%' -- quando tem % no final, é para produtos que começam com essa palavra
+
+select nome
+from produtos
+where nome like '%SSD%' -- quanto tem % no inicio e final, é para produtos que contém essa palavra
+
+select nome
+from produtos
+where nome like '%Pro' -- quando tem % no início, é para produtos que terminam com essa palabvra
