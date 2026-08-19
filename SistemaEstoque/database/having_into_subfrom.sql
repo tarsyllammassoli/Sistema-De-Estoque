@@ -64,3 +64,52 @@ on c.id_categoria = p.id_categoria
 group by c.descricao_c
 having count(*) >= 3
 and avg(preco_venda) >= 500.00
+
+select id_produto, nome, quantidade, estoque_minimo
+into produtos_baixo_Estoque -- Cria uma tabela nova com dados existentes
+from produtos
+where quantidade < estoque_minimo
+
+select * from produtos_baixo_Estoque
+
+select p.nome, preco_venda, descricao_c
+into Produtos_Categoria_Alta
+from produtos p, categorias c
+where p.id_categoria = c.id_categoria
+and preco_venda > 1000
+
+select * from Produtos_Categoria_Alta
+
+select id_fornecedor, count(*) as quantidade
+into Fornecedores_Destaque
+from produtos
+group by id_Fornecedor
+having count(*) >= 6
+
+select * from Fornecedores_Destaque
+
+select id_produto, nome, preco_venda
+into Produtos_Acima_Media
+from produtos
+where preco_venda > (
+	select avg(preco_venda)
+	from produtos
+)
+
+select * from Produtos_Acima_Media
+
+-----------------------------------
+select nome, preco_venda
+from produtos
+where preco_venda > 1000
+
+union all
+
+select nome, estoque_minimo
+from produtos
+where estoque_minimo < 5
+
+select nome, estoque_minimo, preco_venda
+from produtos
+where estoque_minimo < 5
+OR preco_venda > 1000
