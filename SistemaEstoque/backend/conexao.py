@@ -8,3 +8,12 @@ conexao = pyodbc.connect(
 )
 
 print("Conectado com sucesso!")
+
+cursor = conexao.cursor()
+
+cursor.execute("SELECT * FROM Produtos")
+
+for produto in cursor:
+    print(produto)
+
+conexao.close()
