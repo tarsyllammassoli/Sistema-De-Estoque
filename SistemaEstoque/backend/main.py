@@ -1,4 +1,4 @@
-
+from produtos.py import produtos
 
 while True:
     print(f"""------------------ Sistema De Estoque Simples ------------------\n
@@ -12,16 +12,16 @@ while True:
     opcao = input("Escolha a opção que deseja: ")
 
     if opcao == '1':
-        print('produtos')
+        menu_produtos()
 
     elif opcao == '2':
-        print('Fornecedores')
+        listar_fornecedores()
 
     elif opcao == '3':
-        print('Usuários')
+        listar_usuarios()
 
     elif opcao == '4':
-        print('Movimentações')
+        listar_movimentacoes()
 
     elif opcao == '5':
         print('Saindo...')
