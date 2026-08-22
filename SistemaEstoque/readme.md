@@ -35,3 +35,11 @@ sistema_estoque/
 ├── db.py                # Módulo de conexão com o SQL Server
 ├── requirements.txt     # Dependências do projeto
 └── README.md            # Documentação do repositório
+
+## 🎨 UI/UX
+
+### Tela de Login
+
+Primeiro protótipo da interface do Sistema de Controle de Estoque.
+
+![Tela de Login](docs/telas/Login.png)
