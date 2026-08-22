@@ -1,3 +1,37 @@
+import pyodbc
+conexao = pyodbc.connect(
+    "DRIVER={ODBC Driver 17 for SQL Server};"
+    "SERVER=DESKTOP-30FVUL3\\SQLEXPRESS;"
+    "DATABASE=Sistema_Estoque;"
+    "Trusted_Connection=yes;"
+)
+
+cursor = conexao.cursor()
+
+def cadastrar_produto():
+    nome = input('Nome do produto: ')
+    codigo = input('Codigo: ')
+    descricao = input('Descrição: ')
+    preco_compra = input('Preço de Compra: ')
+    preco_venda = input('Preço de Venda: ')
+    quantidade = input('Quantidade: ')
+    estoque_minimo = input('Estoque Mínimo: ')
+    status_produto = input('Status do produto: ')
+    id_fornecedor = input('ID do Fornecedor: ')
+    id_categoria = input('ID da Categoria: ')
+
+    cursor.execute(f"""INSERT INTO Produtos
+                (nome,codigo,descricao,preco_compra,preco_venda,quantidade,
+                estoque_minimo,status_produto,id_fornecedor, id_categoria)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (nome,codigo,descricao,preco_compra,preco_venda,quantidade,
+                      estoque_minimo,status_produto,id_fornecedor,id_categoria))
+    
+    conexao.commit()
+
+    print("Produto cadastrado com sucesso!")
+
+cadastrar_produto()
 
 def menu_produtos():
     while True:
