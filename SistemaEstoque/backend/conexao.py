@@ -9,9 +9,9 @@ conexao = pyodbc.connect(
 
 print("Conectado com sucesso!")
 
-cursor = conexao.cursor()
+cursor = conexao.cursor() #  cursor para excecutar meus comandos no meu banco
 
-cursor.execute("SELECT * FROM Produtos")
+cursor.execute("SELECT * FROM Produtos") # ai eu mando SQL por aqui e excecuto
 
 for produto in cursor:
     print(produto)
