@@ -28,13 +28,13 @@ def menu_produtos():
         elif opcao_menu == '3':
             print(buscar_produtos())
         elif opcao_menu == '4':
-            print('Atualizando produtos...')
+            print(atualizar_produto())
         elif opcao_menu == '5':
-            print('Excluindo produtos...')
+            print(excluir_produto())
         elif opcao_menu == '6':
-            print('Adicionando produtos...')
+            print(adicionar_produto())
         elif opcao_menu == '7':
-            print('Removendo produtos...')
+            print(remover_produto())
         elif opcao_menu == '8':
             print('Voltando...')
             break
@@ -70,7 +70,7 @@ def buscar_produtos():
         nome = input('Nome: ')
         categoria = input('Categoria: ')
 
-        cursor.execute(f'SELECT p.nome, c.categoria FROM Produtos p join categoria c on p.id_categoria = c.id_categoria where nome = ? and categoria = ?',
+        cursor.execute(f'SELECT p.nome=?, c.categoria=? FROM Produtos p join categoria c on p.id_categoria = c.id_categoria where nome=? and categoria=?',
                        (nome, categoria))
         conexao.commit()
 
@@ -85,3 +85,49 @@ def buscar_produtos():
         print("Produto encontrado.")
 
 menu_produtos()
+
+def atualizar_produto():
+    print("""-------------- Atualizar Produto --------------""")
+    id_produto = input('ID do produto: ')
+    nome = input('Novo nome do produto: ')
+    codigo = input('Novo código: ')
+    descricao = input('Nova descrição: ')
+    preco_compra = input('Novo preço de compra: ')
+    preco_venda = input('Novo preço de venda: ')
+    quantidade = input('Nova quantidade: ')
+    estoque_minimo = input('Novo estoque mínimo: ')
+    status_produto = input('Novo status do produto: ')
+    id_fornecedor = input('Novo ID do fornecedor: ')
+    id_categoria = input('Novo ID da categoria: ')
+
+    cursor.execute(f"""UPDATE Produtos
+                SET nome=?, codigo=?, descricao=?, preco_compra=?, preco_venda=?, quantidade=?,
+                estoque_minimo=?, status_produto=?, id_fornecedor=?, id_categoria=?
+                WHERE id_produto=?
+                """, (nome, codigo, descricao, preco_compra, preco_venda, quantidade,
+                      estoque_minimo, status_produto, id_fornecedor, id_categoria, id_produto))
+    
+    conexao.commit()
+
+    print("Produto atualizado com sucesso!")
+
+def excluir_produto():
+    print("""-------------- Excluir Produto --------------""")
+    id_produto = input('ID do produto: ')
+
+    cursor.execute(f'DELETE FROM Produtos WHERE id_produto=?', (id_produto,))
+
+    conexao.commit()
+
+    print("Produto excluído com sucesso!")
+
+def adicionar_produto():
+    print("""-------------- Adicionar Estoque --------------""")
+    id_produto = input('ID do produto: ')
+    quantidade = input('Quantidade a adicionar: ')
+
+    cursor.execute(f'UPDATE Produtos SET quantidade = quantidade + ? WHERE id_produto=?', (quantidade, id_produto))
+
+    conexao.commit()
+
+    print("Estoque adicionado com sucesso!")
